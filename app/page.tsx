@@ -1,65 +1,84 @@
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div
+      className="min-h-screen flex flex-col items-center justify-center px-4"
+      style={{ background: '#07100A' }}
+    >
+      {/* Gradiente de fondo */}
+      <div
+        className="fixed inset-0 -z-10 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 70%)',
+        }}
+      />
+
+      <div className="text-center space-y-8 max-w-lg">
+        {/* Logo */}
+        <div className="space-y-2">
+          <div className="text-8xl" aria-hidden>
+            🐸
+          </div>
+          <h1
+            className="text-4xl sm:text-6xl font-black tracking-tight"
+            style={{ color: '#c9a84c', fontFamily: 'serif' }}
+          >
+            LA RANA
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-[#86a98c] font-mono text-sm tracking-widest uppercase">
+            Juego de Azar Digital
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Descripción */}
+        <p className="text-[#4ade80]/70 text-base leading-relaxed">
+          El clásico juego colombiano de la rana, ahora en formato digital.
+          <br />
+          <span className="text-[#86a98c] text-sm">RTP certificado 85% · Provably Fair · COLJUEGOS</span>
+        </p>
+
+        {/* CTA */}
+        <Link
+          href="/rana"
+          className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-black text-xl uppercase tracking-widest transition-all duration-200 hover:scale-105 active:scale-95"
+          style={{
+            background: '#c9a84c',
+            color: '#07100A',
+            boxShadow: '0 0 40px rgba(201,168,76,0.4)',
+          }}
+        >
+          <span>🎯</span> Jugar Ahora
+        </Link>
+
+        {/* Stats */}
+        <div className="grid grid-cols-3 gap-4 pt-4">
+          {[
+            { label: 'RTP', value: '85%', color: '#4ade80' },
+            { label: 'Premio máx', value: '×15', color: '#fbbf24' },
+            { label: 'Apuesta mín', value: '$500', color: '#60a5fa' },
+          ].map(({ label, value, color }) => (
+            <div
+              key={label}
+              className="rounded-xl border p-3 text-center"
+              style={{ borderColor: color + '30', background: color + '10' }}
+            >
+              <p className="font-mono font-black text-xl" style={{ color }}>
+                {value}
+              </p>
+              <p className="text-[#86a98c] text-[10px] font-mono uppercase tracking-widest mt-1">
+                {label}
+              </p>
+            </div>
+          ))}
         </div>
-      </main>
+
+        {/* Footer */}
+        <p className="text-[#1a3d27] text-[10px] font-mono">
+          ⚠️ Jugá con responsabilidad · +18 · Modo DEMO — sin dinero real
+        </p>
+      </div>
     </div>
   );
 }

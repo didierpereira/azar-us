@@ -1,26 +1,79 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Casino dark — Colombian Jungle Luxury */
+  --background: #07100A;
+  --foreground: #e8f5e9;
+
+  /* Brand */
+  --gold: #c9a84c;
+  --gold-light: #f0d070;
+  --green-felt: #1a4d2e;
+  --green-dark: #0a1e0f;
+  --green-bright: #4ade80;
+
+  /* Hole accents */
+  --hole-x1: #4ade80;
+  --hole-x2: #60a5fa;
+  --hole-x5: #fb923c;
+  --hole-rana: #fbbf24;
+  --hole-pierde: #ef4444;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-gold: var(--gold);
+  --font-sans: var(--font-rajdhani);
+  --font-mono: var(--font-mono);
+  --font-display: var(--font-cinzel);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-rajdhani), 'Segoe UI', system-ui, sans-serif;
+}
+
+/* Scrollbar custom */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0a1e0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a4d2e;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c9a84c40;
+}
+
+/* Animación del agujero ganador */
+@keyframes hole-win {
+  0%   { opacity: 0.6; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+/* Animación de la ficha volando */
+@keyframes ficha-fall {
+  0%   { transform: translateY(-40px) scale(0.8); opacity: 0; }
+  60%  { transform: translateY(0px) scale(1.1); opacity: 1; }
+  100% { transform: translateY(4px) scale(1); opacity: 1; }
+}
+
+/* Badge COLJUEGOS */
+.badge-coljuegos {
+  font-family: var(--font-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2d5535;
 }
